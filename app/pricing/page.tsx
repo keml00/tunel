@@ -5,47 +5,65 @@ import { useState } from "react";
 
 const plans = [
   {
-    id: "basic",
-    name: "Базовый",
-    price: 300,
+    id: "1month",
+    name: "1 месяц",
+    price: 200,
     period: "мес",
     features: [
-      "100 GB трафика",
-      "3 устройства",
+      "Безлимитный трафик",
+      "До 5 устройств",
       "Поддержка 24/7",
       "WireGuard протокол",
-      "Базовая скорость"
+      "Высокая скорость"
     ],
     popular: false
   },
   {
-    id: "premium",
-    name: "Премиум",
-    price: 500,
-    period: "мес",
+    id: "3months",
+    name: "3 месяца",
+    price: 550,
+    period: "3 мес",
+    pricePerMonth: 183,
     features: [
       "Безлимитный трафик",
-      "5 устройств",
-      "Приоритетная поддержка",
+      "До 5 устройств",
+      "Поддержка 24/7",
       "WireGuard протокол",
-      "Максимальная скорость",
-      "Приоритет в очереди"
+      "Высокая скорость",
+      "Экономия 50₽"
     ],
     popular: true
   },
   {
-    id: "family",
-    name: "Семейный",
-    price: 800,
-    period: "мес",
+    id: "6months",
+    name: "6 месяцев",
+    price: 1000,
+    period: "6 мес",
+    pricePerMonth: 167,
     features: [
       "Безлимитный трафик",
-      "10 устройств",
-      "Приоритетная поддержка",
+      "До 5 устройств",
+      "Поддержка 24/7",
       "WireGuard протокол",
-      "Максимальная скорость",
-      "Семейный доступ",
-      "Общая статистика"
+      "Высокая скорость",
+      "Экономия 200₽"
+    ],
+    popular: false
+  },
+  {
+    id: "12months",
+    name: "12 месяцев",
+    price: 1800,
+    period: "12 мес",
+    pricePerMonth: 150,
+    features: [
+      "Безлимитный трафик",
+      "До 5 устройств",
+      "Поддержка 24/7",
+      "WireGuard протокол",
+      "Высокая скорость",
+      "Экономия 600₽",
+      "Лучшая цена!"
     ],
     popular: false
   }
@@ -56,8 +74,9 @@ export default function Pricing() {
 
   const handleSelectPlan = (planId: string) => {
     setSelectedPlan(planId);
-    // TODO: Интеграция с платежной системой
-    alert(`Выбран тариф: ${plans.find(p => p.id === planId)?.name}\n\nИнтеграция с платежной системой будет добавлена.`);
+    const plan = plans.find(p => p.id === planId);
+    // Открываем Telegram бота для оплаты
+    window.open('https://t.me/vpnbuysell_bot?start=' + planId, '_blank');
   };
 
   return (
@@ -71,7 +90,7 @@ export default function Pricing() {
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
               </svg>
             </div>
-            <span className="text-2xl font-bold text-gray-900 dark:text-white">SecureVPN</span>
+            <span className="text-2xl font-bold text-gray-900 dark:text-white">VPN Buy & Sell</span>
           </Link>
           <div className="flex gap-4">
             <Link href="/" className="text-gray-700 dark:text-gray-300 hover:text-indigo-600 dark:hover:text-indigo-400">
@@ -152,44 +171,37 @@ export default function Pricing() {
         {/* Payment Methods */}
         <div className="max-w-4xl mx-auto bg-white dark:bg-gray-800 rounded-xl shadow-lg p-8 mb-12">
           <h2 className="text-2xl font-bold text-gray-900 dark:text-white mb-6 text-center">
-            Способы оплаты
+            Способ оплаты
           </h2>
-          <div className="grid md:grid-cols-4 gap-6">
-            <div className="flex flex-col items-center p-4 bg-gray-50 dark:bg-gray-700 rounded-lg">
-              <div className="w-16 h-16 bg-blue-100 dark:bg-blue-900 rounded-full flex items-center justify-center mb-3">
-                <svg className="w-8 h-8 text-blue-600 dark:text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 10h18M7 15h1m4 0h1m-7 4h12a3 3 0 003-3V8a3 3 0 00-3-3H6a3 3 0 00-3 3v8a3 3 0 003 3z" />
+          <div className="flex flex-col items-center">
+            <div className="flex flex-col items-center p-8 bg-gradient-to-br from-blue-50 to-indigo-50 dark:from-blue-900/20 dark:to-indigo-900/20 rounded-xl border-2 border-indigo-200 dark:border-indigo-800 max-w-md w-full">
+              <div className="w-24 h-24 bg-blue-500 rounded-full flex items-center justify-center mb-4">
+                <svg className="w-12 h-12 text-white" fill="currentColor" viewBox="0 0 24 24">
+                  <path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.894 8.221l-1.97 9.28c-.145.658-.537.818-1.084.508l-3-2.21-1.446 1.394c-.14.18-.357.295-.6.295-.002 0-.003 0-.005 0l.213-3.054 5.56-5.022c.24-.213-.054-.334-.373-.121l-6.869 4.326-2.96-.924c-.64-.203-.658-.64.135-.954l11.566-4.458c.538-.196 1.006.128.832.941z"/>
                 </svg>
               </div>
-              <span className="text-sm font-medium text-gray-900 dark:text-white">Банковская карта</span>
-            </div>
-
-            <div className="flex flex-col items-center p-4 bg-gray-50 dark:bg-gray-700 rounded-lg">
-              <div className="w-16 h-16 bg-green-100 dark:bg-green-900 rounded-full flex items-center justify-center mb-3">
-                <svg className="w-8 h-8 text-green-600 dark:text-green-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+              <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-2">
+                Telegram Bot
+              </h3>
+              <p className="text-center text-gray-600 dark:text-gray-300 mb-4">
+                Оплата через личные сообщения в боте @vpnbuysell_bot
+              </p>
+              <a
+                href="https://t.me/vpnbuysell_bot"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="px-8 py-3 bg-blue-500 hover:bg-blue-600 text-white font-semibold rounded-lg transition-colors flex items-center gap-2"
+              >
+                <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                  <path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.894 8.221l-1.97 9.28c-.145.658-.537.818-1.084.508l-3-2.21-1.446 1.394c-.14.18-.357.295-.6.295-.002 0-.003 0-.005 0l.213-3.054 5.56-5.022c.24-.213-.054-.334-.373-.121l-6.869 4.326-2.96-.924c-.64-.203-.658-.64.135-.954l11.566-4.458c.538-.196 1.006.128.832.941z"/>
                 </svg>
-              </div>
-              <span className="text-sm font-medium text-gray-900 dark:text-white">ЮKassa</span>
+                Открыть бота
+              </a>
             </div>
-
-            <div className="flex flex-col items-center p-4 bg-gray-50 dark:bg-gray-700 rounded-lg">
-              <div className="w-16 h-16 bg-purple-100 dark:bg-purple-900 rounded-full flex items-center justify-center mb-3">
-                <svg className="w-8 h-8 text-purple-600 dark:text-purple-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 9V7a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2m2 4h10a2 2 0 002-2v-6a2 2 0 00-2-2H9a2 2 0 00-2 2v6a2 2 0 002 2zm7-5a2 2 0 11-4 0 2 2 0 014 0z" />
-                </svg>
-              </div>
-              <span className="text-sm font-medium text-gray-900 dark:text-white">СБП</span>
-            </div>
-
-            <div className="flex flex-col items-center p-4 bg-gray-50 dark:bg-gray-700 rounded-lg">
-              <div className="w-16 h-16 bg-orange-100 dark:bg-orange-900 rounded-full flex items-center justify-center mb-3">
-                <svg className="w-8 h-8 text-orange-600 dark:text-orange-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z" />
-                </svg>
-              </div>
-              <span className="text-sm font-medium text-gray-900 dark:text-white">Telegram Bot</span>
-            </div>
+            <p className="mt-6 text-sm text-gray-500 dark:text-gray-400 text-center max-w-md">
+              После выбора тарифа вы будете перенаправлены в Telegram бот для завершения оплаты.
+              Бот поддерживает оплату картой, СБП и другие способы.
+            </p>
           </div>
         </div>
 
@@ -258,7 +270,10 @@ export default function Pricing() {
       {/* Footer */}
       <footer className="container mx-auto px-4 py-8 mt-12 border-t border-gray-200 dark:border-gray-700">
         <div className="text-center text-gray-600 dark:text-gray-400">
-          <p>© 2026 SecureVPN. Личный VPN сервис для безопасного интернета.</p>
+          <p>© 2026 VPN Buy & Sell. Личный VPN сервис для безопасного интернета.</p>
+          <p className="mt-2 text-sm">
+            Telegram: <a href="https://t.me/vpnbuysell_bot" target="_blank" rel="noopener noreferrer" className="text-indigo-600 dark:text-indigo-400 hover:underline">@vpnbuysell_bot</a>
+          </p>
         </div>
       </footer>
     </div>

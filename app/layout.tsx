@@ -13,7 +13,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "SecureVPN - Личный VPN сервис",
+  title: "VPN Buy & Sell - Личный VPN сервис",
   description: "Безопасный личный VPN для защиты вашего интернет-соединения",
 };
 

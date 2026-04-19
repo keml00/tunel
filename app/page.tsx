@@ -12,7 +12,7 @@ export default function Home() {
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
               </svg>
             </div>
-            <span className="text-2xl font-bold text-gray-900 dark:text-white">SecureVPN</span>
+            <span className="text-2xl font-bold text-gray-900 dark:text-white">VPN Buy & Sell</span>
           </div>
           <div className="flex gap-4">
             <Link href="#features" className="text-gray-700 dark:text-gray-300 hover:text-indigo-600 dark:hover:text-indigo-400">
@@ -159,9 +159,12 @@ export default function Home() {
       {/* Footer */}
       <footer className="container mx-auto px-4 py-8 mt-32 border-t border-gray-200 dark:border-gray-700">
         <div className="text-center text-gray-600 dark:text-gray-400">
-          <p>© 2026 SecureVPN. Личный VPN сервис для безопасного интернета.</p>
+          <p>© 2026 VPN Buy & Sell. Личный VPN сервис для безопасного интернета.</p>
           <p className="mt-2 text-sm">
             Сервис соответствует законодательству РФ и предназначен для личного использования.
+          </p>
+          <p className="mt-2 text-sm">
+            Telegram: <a href="https://t.me/vpnbuysell_bot" target="_blank" rel="noopener noreferrer" className="text-indigo-600 dark:text-indigo-400 hover:underline">@vpnbuysell_bot</a>
           </p>
         </div>
       </footer>

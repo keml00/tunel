@@ -18,7 +18,7 @@ export default function Dashboard() {
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
                 </svg>
               </div>
-              <span className="text-xl font-bold text-gray-900 dark:text-white">SecureVPN</span>
+              <span className="text-xl font-bold text-gray-900 dark:text-white">VPN Buy & Sell</span>
             </Link>
             <div className="flex items-center gap-4">
               <span className="text-gray-700 dark:text-gray-300">user@example.com</span>
