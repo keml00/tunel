@@ -1,36 +1,158 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# SecureVPN - Личный VPN Сервис
 
-## Getting Started
+Современный веб-сайт для личного VPN сервиса, соответствующий законодательству РФ.
 
-First, run the development server:
+## Особенности
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+- 🔒 Информация о безопасном VPN подключении
+- 📱 Адаптивный дизайн для всех устройств
+- 🌙 Поддержка тёмной темы
+- ⚡ Быстрая загрузка благодаря Next.js 16
+- 🎨 Современный UI с Tailwind CSS
+
+## Технологии
+
+- **Framework**: Next.js 16.2.4 (App Router)
+- **Styling**: Tailwind CSS
+- **Language**: TypeScript
+- **Deployment**: Vercel
+
+## Структура проекта
+
+```
+vpn-website/
+├── app/
+│   ├── page.tsx           # Главная страница
+│   ├── register/          # Страница регистрации
+│   ├── dashboard/         # Панель управления
+│   └── layout.tsx         # Общий layout
+├── public/                # Статические файлы
+└── vercel.json           # Конфигурация Vercel
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Локальная разработка
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+1. Установите зависимости:
+```bash
+npm install
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+2. Запустите dev сервер:
+```bash
+npm run dev
+```
 
-## Learn More
+3. Откройте [http://localhost:3000](http://localhost:3000)
 
-To learn more about Next.js, take a look at the following resources:
+## Деплой на Vercel
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+### Вариант 1: Через Vercel CLI (рекомендуется)
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+1. Установите Vercel CLI:
+```bash
+npm install -g vercel
+```
 
-## Deploy on Vercel
+2. Войдите в аккаунт:
+```bash
+vercel login
+```
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+3. Разверните проект:
+```bash
+cd vpn-website
+vercel
+```
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+4. Для production деплоя:
+```bash
+vercel --prod
+```
+
+### Вариант 2: Через GitHub + Vercel Dashboard
+
+1. Создайте репозиторий на GitHub:
+```bash
+git remote add origin https://github.com/YOUR_USERNAME/vpn-website.git
+git branch -M main
+git push -u origin main
+```
+
+2. Перейдите на [vercel.com](https://vercel.com)
+
+3. Нажмите "New Project"
+
+4. Импортируйте ваш GitHub репозиторий
+
+5. Vercel автоматически определит Next.js и настроит деплой
+
+6. Нажмите "Deploy"
+
+### Вариант 3: Через Vercel Dashboard (без Git)
+
+1. Перейдите на [vercel.com](https://vercel.com)
+
+2. Нажмите "Add New..." → "Project"
+
+3. Выберите "Deploy from a Git repository" или загрузите папку напрямую
+
+4. Следуйте инструкциям на экране
+
+## Настройка домена
+
+После деплоя вы можете:
+
+1. Использовать бесплатный домен Vercel: `your-project.vercel.app`
+
+2. Подключить свой домен:
+   - Перейдите в настройки проекта на Vercel
+   - Выберите "Domains"
+   - Добавьте свой домен и настройте DNS записи
+
+## Переменные окружения
+
+Если вам нужны переменные окружения (API ключи, база данных и т.д.):
+
+1. Создайте файл `.env.local`:
+```env
+NEXT_PUBLIC_API_URL=your_api_url
+DATABASE_URL=your_database_url
+```
+
+2. Добавьте их в Vercel:
+   - Перейдите в настройки проекта
+   - Выберите "Environment Variables"
+   - Добавьте необходимые переменные
+
+## Юридическая информация
+
+⚠️ **Важно**: Этот сайт предназначен для личного VPN сервиса, соответствующего законодательству РФ:
+
+- Не предназначен для обхода блокировок
+- Ведётся логирование подключений
+- Предназначен для личного использования или использования в рамках организации
+- Не является коммерческим VPN сервисом
+
+## Дальнейшая разработка
+
+Для полноценного функционирования сайта потребуется:
+
+1. **Backend API**:
+   - Аутентификация пользователей
+   - Управление устройствами
+   - Генерация WireGuard конфигураций
+   - Статистика использования
+
+2. **База данных**:
+   - PostgreSQL или MySQL
+   - Хранение пользователей и логов
+
+3. **VPN сервер**:
+   - Настройка WireGuard
+   - Интеграция с API
+
+См. файл `../vpn-service-prompt.md` для детального плана разработки.
+
+## Лицензия
+
+MIT
