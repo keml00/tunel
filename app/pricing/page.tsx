@@ -108,9 +108,6 @@ export default function Pricing() {
             <Link href="/" className="text-gray-700 dark:text-gray-300 hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors font-medium">
               Главная
             </Link>
-            <Link href="/dashboard" className="px-6 py-2 bg-gradient-to-r from-indigo-600 to-purple-600 text-white rounded-xl hover:shadow-lg transition-all transform hover:scale-105 font-medium">
-              Войти
-            </Link>
           </div>
         </nav>
       </header>

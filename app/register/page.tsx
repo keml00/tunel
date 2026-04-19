@@ -111,9 +111,9 @@ export default function Register() {
           <div className="mt-6 text-center">
             <p className="text-gray-600 dark:text-gray-300">
               Уже есть аккаунт?{" "}
-              <Link href="/dashboard" className="text-indigo-600 dark:text-indigo-400 font-semibold hover:underline">
-                Войти
-              </Link>
+              <a href="https://t.me/vpnbuysell_bot" target="_blank" rel="noopener noreferrer" className="text-indigo-600 dark:text-indigo-400 font-semibold hover:underline">
+                Напишите в бот
+              </a>
             </p>
           </div>
         </div>
