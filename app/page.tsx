@@ -1,10 +1,13 @@
 import Link from "next/link";
 import VisitorCounter from "./components/VisitorCounter";
 import TelegramButton from "./components/TelegramButton";
+import StructuredData from "./components/StructuredData";
 
 export default function Home() {
   return (
-    <div className="min-h-screen bg-gradient-to-br from-blue-50 via-indigo-50 to-purple-50 dark:from-gray-900 dark:via-indigo-950 dark:to-purple-950">
+    <>
+      <StructuredData />
+      <div className="min-h-screen bg-gradient-to-br from-blue-50 via-indigo-50 to-purple-50 dark:from-gray-900 dark:via-indigo-950 dark:to-purple-950">
       {/* Animated background elements */}
       <div className="fixed inset-0 overflow-hidden pointer-events-none">
         <div className="absolute top-20 left-10 w-72 h-72 bg-blue-400/20 rounded-full blur-3xl animate-pulse"></div>
@@ -221,5 +224,6 @@ export default function Home() {
       {/* Telegram Button */}
       <TelegramButton />
     </div>
+    </>
   );
 }
