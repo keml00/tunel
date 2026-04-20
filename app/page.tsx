@@ -116,7 +116,7 @@ export default function Home() {
                 Надёжное шифрование
               </h3>
               <p className="text-gray-600 dark:text-gray-300 leading-relaxed">
-                Современный протокол WireGuard с шифрованием AES-256 для максимальной защиты ваших данных.
+                Современный протокол VLESS с надёжным шифрованием для максимальной защиты ваших данных.
               </p>
             </div>
 
